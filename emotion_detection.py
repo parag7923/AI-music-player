@@ -4,5 +4,4 @@ emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-e
 
 def get_emotion(text: str):
     results = emotion_classifier(text)
-    
     return results[0]['label']
