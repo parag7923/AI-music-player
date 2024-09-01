@@ -6,6 +6,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import emotion_detection
 import os
 
+# Load environment variables
 load_dotenv()
 
 app = FastAPI()
@@ -13,6 +14,7 @@ app = FastAPI()
 SPOTIPY_CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
 SPOTIPY_CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
 
+# Initialize Spotify client
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET))
 
 class TextInput(BaseModel):
@@ -73,3 +75,8 @@ def generate_playlist(input: TextInput):
 @app.get("/")
 def read_root():
     return {"message": "Emotion-Triggered Music Player is running!"}
+
+# Add this block to run the server using Python directly
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
