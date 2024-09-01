@@ -79,5 +79,4 @@ def read_root():
 # Add this block to run the server using Python directly
 if __name__ == "__main__":
     import uvicorn
-    codespace-urban-adventure-x756967v9vxhp4x4
     uvicorn.run(app, host="127.0.0.1", port=8000)
